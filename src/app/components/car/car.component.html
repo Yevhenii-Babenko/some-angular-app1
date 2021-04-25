@@ -1,0 +1,60 @@
+<div class="container">
+    <h4><mark>Car:</mark>{{name}} <small>{{model}}</small></h4>
+</div>
+<div class="alert alert-success">
+    Car characteristics:
+    <ul>
+        <li>Speed: <strong>{{speed}}</strong> km</li>
+        <li>Car's color <strong>{{colors.car}}</strong> </li>
+        <li>Salon's color <strong>{{colors.salon}}</strong></li>
+        <li>Wheel's color <strong>{{colors.wheels}}</strong></li>
+    </ul>
+</div>
+
+<h5>Editing an object</h5>
+<form>
+    <button class="btn btn-danger" (click)="showEdit()">Edit</button>
+    <div><br></div>
+    <div class="form-group" *ngIf=isEdit>
+        <input type="text" placeholder="Car's name" class="form-control" [(ngModel)]="name" name="name">
+        <br>
+        <input type="text" placeholder="Car's model" class="form-control" [(ngModel)]="model" name="model">
+        <br>
+        <input type="number" placeholder="Speed" class="form-control" [(ngModel)]="speed" name="speed">
+        <br>
+        <input type="text" placeholder="Car's color" class="form-control" [(ngModel)]="colors.car" name="car">
+        <br>
+        <input type="text" placeholder="Salon's color" class="form-control" [(ngModel)]="colors.salon" name="salon">
+        <br>
+        <input type="text" placeholder="Wheels' color" class="form-control" [(ngModel)]="colors.wheels" name="wheels">
+        <br>
+        <button type="submit" class="btn btn-outline-success">Add</button>
+        <br>
+    </div> 
+</form>
+
+<h5>Car's options</h5>
+<form (submit)="addOpt(option.value)">
+    <div class="form-group">
+        <label for="option">Adding new option</label>
+        <input type="text" id="option" placeholder="Input something" class="form-control" #option>
+        <br>
+        <button type="submit" class="btn btn-outline-success">Add</button>
+        <br>
+    </div> 
+
+</form>
+<div class="alert alert-warning">
+    <ul>
+        <li *ngFor="let opt of options">{{opt}} <button class="btn btn-danger btn-sm" (click)="deleteOpt(opt)">Delete</button></li>
+    </ul>
+</div>
+<button class="btn btn-danger" (click)="carSelect('BMW')">BMW</button>
+<button class="btn btn-success" (click)="carSelect('Audi')">Audi</button>
+<button class="btn btn-info" (click)="carSelect('Mercedes')">Mercedes</button>
+
+
+
+
+        
+
